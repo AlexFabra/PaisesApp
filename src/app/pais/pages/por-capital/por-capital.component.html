@@ -1,1 +1,23 @@
-<p>por-capital works!</p>
+<p>Capitales</p>
+<hr>
+<div class="row">
+    <div class="col">
+        <!-- escuchamos el evento (por eso los paréntesis) emitido por pais-input.component  
+        cuando nosotros pulsamos una tecla se disparará onDebounce.
+        -->
+        <app-pais-input
+            (onEnter)="buscar( $event )"
+            placeholder="Buscar país por capital...">
+        </app-pais-input>
+    </div>
+</div>
+
+<hr>
+<div *ngIf="error" class="alert alert-danger">
+    ¿{{capital}}... Esa capital realmente existe?
+</div>
+<div class="row" *ngIf="paises.length>0">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>

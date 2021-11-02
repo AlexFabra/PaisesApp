@@ -11,6 +11,8 @@ export class PaisService {
 
   constructor( private http: HttpClient) { }
 
+  //estas funciones a datos mediante url y retornan un array de objetos Observable que tendran los datos de cada pais (nombre, capital, imagen, etc.)
+
   buscarPais(nombrePais:string): Observable<Pais[]>{
     const url=`${this.apiUrl}/name/${nombrePais}`;
     //por qué petición get?
