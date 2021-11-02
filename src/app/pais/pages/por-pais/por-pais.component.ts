@@ -5,9 +5,7 @@ import { Pais } from '../../interfaces/pais.interface';
 
 @Component({
   selector: 'app-por-pais',
-  templateUrl: './por-pais.component.html',
-  styles: [
-  ]
+  templateUrl: './por-pais.component.html'
 })
 export class PorPaisComponent {
 
@@ -17,13 +15,16 @@ export class PorPaisComponent {
   
   constructor(private PaisService:PaisService){}
 
-  buscar(){
+  buscar(pais: string){
     this.error=false;
+    this.pais=pais;
     console.log(this.pais);
     this.PaisService.buscarPais(this.pais).subscribe(
       (paises)=>{console.log(paises);this.paises=paises},
       (err)=> {this.error=true;this.paises=[]}
     );
   }
-
+  sugerencias(pais:string){
+    
+  }
 }
