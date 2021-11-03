@@ -8,6 +8,7 @@ import { Pais } from '../interfaces/pais.interface';
 })
 export class PaisService {
   private apiUrl: string = 'https://restcountries.com/v3.1'
+  private apiUrl2: string = 'https://restcountries.com/v2'
 
   constructor( private http: HttpClient) { }
 
@@ -25,7 +26,7 @@ export class PaisService {
   }
 
   getPaisPorAlpha( id: string ):Observable<Pais>{
-    const url = `${ this.apiUrl }/alpha/${ id }`;
+    const url = `${ this.apiUrl2 }/alpha/${ id }`;
     return this.http.get<Pais>( url );
   }
 
