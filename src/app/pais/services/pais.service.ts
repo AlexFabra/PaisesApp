@@ -30,4 +30,9 @@ export class PaisService {
     return this.http.get<Pais>( url );
   }
 
+  buscarRegion(region:string):Observable<Pais[]>{
+    const url =`${ this.apiUrl2 }/regionalbloc/${region}`;  //?fields=name,capital,alfa2code,flag,population
+    return this.http.get<Pais[]>(url);
+  }
+
 }
