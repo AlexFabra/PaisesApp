@@ -12,6 +12,11 @@
         </app-pais-input>
     </div>
 </div>
+<ul class="list-group">
+    <li *ngFor="let pais of paisesSugeridos" class="list-group-item list-group-item-action">
+        <a [routerLink]="['/pais', pais.cca2]"></a>
+    </li>
+</ul>
 
 <hr>
 <div *ngIf="error" class="alert alert-danger">

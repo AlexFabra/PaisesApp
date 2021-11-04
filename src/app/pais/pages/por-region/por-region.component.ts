@@ -37,7 +37,6 @@ export class PorRegionComponent {
   }
   activarRegion(region:string){
     if (region===this.regionActiva){return;}
-    this.paises=[];
     this.regionActiva=region;
     //llamar al servicio:
     this.paisService.buscarRegion(this.regionActiva).subscribe(

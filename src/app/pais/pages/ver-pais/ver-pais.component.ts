@@ -39,10 +39,10 @@ export class VerPaisComponent implements OnInit {
         this.idPais=params.id;
         this.paisService.getPaisPorAlpha(params.id).subscribe(
           pais => {
-            //console.log(pais);
+            console.log(pais);
             this.pais=pais;
-            this.poblacion=pais.population
-            this.independencia=pais.independent
+            this.poblacion=pais.population;
+            this.independencia=pais.independent;
           }
         );
       });

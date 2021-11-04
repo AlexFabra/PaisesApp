@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pais } from '../interfaces/pais.interface';
@@ -7,8 +7,12 @@ import { Pais } from '../interfaces/pais.interface';
   providedIn: 'root'
 })
 export class PaisService {
+
   private apiUrl: string = 'https://restcountries.com/v3.1'
   private apiUrl2: string = 'https://restcountries.com/v2'
+  get httpParams (){
+    return new HttpParams().set('fields','name,capital,alfa2Code,flags,population,region,independent');
+  }
 
   constructor( private http: HttpClient) { }
 
@@ -17,7 +21,7 @@ export class PaisService {
   buscarPais(nombrePais:string): Observable<Pais[]>{
     const url=`${this.apiUrl}/name/${nombrePais}`;
     //por qué petición get?
-    return this.http.get<Pais[]>(url);
+    return this.http.get<Pais[]>(url); //,{params:this.httpParams}
   }
 
   buscarCapital( termino: string ):Observable<Pais[]>{
@@ -31,8 +35,10 @@ export class PaisService {
   }
 
   buscarRegion(region:string):Observable<Pais[]>{
-    const url =`${ this.apiUrl2 }/regionalbloc/${region}`;  //?fields=name,capital,alfa2code,flag,population
-    return this.http.get<Pais[]>(url);
+    //const url =`${ this.apiUrl2 }/regionalbloc/${region}`;
+    //return this.http.get<Pais[]>(url,{params: this.httpParams});
+    const url =`${this.apiUrl2}/regionalbloc/${region}`;//?fields=name,capital,alfa2code,flags,population
+    return this.http.get<Pais[]>( url );
   }
 
 }
